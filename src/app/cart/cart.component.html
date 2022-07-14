@@ -9,6 +9,20 @@
   <span>{{ item.price | currency }}</span>
 </div>
 
-<button style="background-color:Tomato;" type="button" (click)="erase()">
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name"> Name </label>
+    <input id="name" type="text" formControlName="name" />
+  </div>
+
+  <div>
+    <label for="address"> Address </label>
+    <input id="address" type="text" formControlName="address" />
+  </div>
+
+  <button class="button" type="submit">Purchase</button>
+</form>
+
+<button *ngIf="items.length !== 0" style="background-color:Tomato;" type="button" (click)="erase()">
   Erase cart
-</button> 
+</button>
